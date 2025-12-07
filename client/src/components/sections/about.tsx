@@ -8,9 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-const skills = [
-  "Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "PostgreSQL", "MongoDB", "Prisma", "AWS", "Docker", "Framer Motion",
-]
+
+
 
 const certifications = [
   {
@@ -83,19 +82,7 @@ export function About() {
            className="flex flex-col gap-8"
         >
           {/* Skills */}
-          <div className="flex flex-col gap-4">
-             <h3 className="text-xl font-semibold">Tech Stack</h3>
-             <div className="flex flex-wrap gap-2">
-               {skills.map((skill) => (
-                 <span 
-                   key={skill}
-                   className="inline-flex items-center rounded-md border border-input bg-background/50 px-3 py-1 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
-                 >
-                   {skill}
-                 </span>
-               ))}
-             </div>
-          </div>
+
 
           {/* Education Card */}
           <Card className="bg-background/40 backdrop-blur-sm border-border/50 hover:shadow-lg hover:border-primary/20 transition-all duration-300 group">
