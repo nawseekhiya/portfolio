@@ -59,19 +59,19 @@ export function Hero() {
             </a>
           </Button>
           <div className="flex gap-2 sm:ml-4">
-             <Button variant="ghost" size="icon" asChild>
-                <a href="https://github.com/abhishekmohanty" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <Github className="h-5 w-5" />
+             <Button variant="ghost" size="icon" className="h-12 w-12 rounded-xl" asChild>
+                <a href="https://github.com/nawseekhiya" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <Github className="h-6 w-6" />
                 </a>
              </Button>
-             <Button variant="ghost" size="icon" asChild>
-                <a href="https://linkedin.com/in/abhishekmohanty" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <Linkedin className="h-5 w-5" />
+             <Button variant="ghost" size="icon" className="h-12 w-12 rounded-xl" asChild>
+                <a href="https://linkedin.com/in/iamabhishekmohanty" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <Linkedin className="h-6 w-6" />
                 </a>
              </Button>
-             <Button variant="ghost" size="icon" asChild>
-                <a href="mailto:contact@abhishekmohanty.com" aria-label="Email">
-                    <Mail className="h-5 w-5" />
+             <Button variant="ghost" size="icon" className="h-12 w-12 rounded-xl" asChild>
+                <a href="mailto:araj80317@gmail.com" aria-label="Email">
+                    <Mail className="h-6 w-6" />
                 </a>
              </Button>
           </div>
