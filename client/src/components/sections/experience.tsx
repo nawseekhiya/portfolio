@@ -27,12 +27,12 @@ const experience: ExperienceItem[] = [
     type: "Internship",
     period: "Oct 2025 - Present",
     achievements: [
-      "Contributing to the development of scalable web applications using Next.js and Node.js.",
-      "Optimizing frontend performance, reducing initial load times by 20%.",
-      "Collaborating with the design team to implement pixel-perfect, responsive UI components.",
-      "Participating in code reviews and agile sprints to ensure high code quality."
+      "Built a job application board from the ground up, implementing intuitive flows and improving application completion rates by 24%.",
+      "Enhanced resume builder templates and resolved major UX issues across the editor, cutting user friction and reducing error occurrences by 31%.",
+      "Converted high-fidelity design files into production-ready interfaces, improving design accuracy and visual consistency by 26%.",
+      "Revamped key UI sections through layout modernization and component restructuring, resulting in a smoother experience and a 21% increase in overall usability."
     ],
-    skills: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Git"],
+    skills: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Python", "Django", "Git"],
     companyUrl: "https://unimad.ai"
   },
   {
@@ -42,12 +42,12 @@ const experience: ExperienceItem[] = [
     type: "Internship",
     period: "Nov 2024 - Jun 2025",
     achievements: [
-      "Worked on product design and engineering initiatives for industrial automation solutions.",
-      "Created detailed 3D models and technical drawings using CAD software.",
-      "Collaborated with cross-functional teams to prototype and test new product features.",
-      "Ensured compliance with industry safety standards and quality protocols."
+      "Spearheaded the end-to-end design and rollout of Metrograsp’s unified brand identity and design system, ensuring consistency across 4+ product lines.",
+      "Created UX flows and prototypes for health and wellness products tailored to the Indian market, optimizing for cultural relevance and usability.",
+      "Drove the launch of a new sub-brand, contributing to a 40% increase in digital engagement in the first quarter post-launch.",
+      "Facilitated cross-functional alignment between design, engineering, and product teams to ensure brand integrity and user-centered decision-making."
     ],
-    skills: ["CAD/CAM", "Product Design", "Prototyping", "SolidWorks", "Technical Documentation"],
+    skills: ["CAD/CAM", "Product Design", "Design Systems", "React", "Figma", "Prototyping"],
     companyUrl: "https://metrograsp.in"
   }
 ]
