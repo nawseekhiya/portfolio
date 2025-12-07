@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Modal } from "@/components/ui/modal";
+import Image from "next/image";
 
 interface Project {
   title: string;
@@ -17,6 +18,7 @@ interface Project {
   github?: string;
   demo?: string;
   imageColor: string; // Placeholder for thumbnail gradient
+  image?: string;
   status: string;
 }
 
@@ -29,6 +31,7 @@ const items: Project[] = [
     github: "https://github.com/nawseekhiya/aqua-aware",
     demo: "https://aqua-aware-abhishek.vercel.app",
     imageColor: "from-green-500/20 to-emerald-500/20",
+    image: "/assets/aqua-aware.png",
     status: "v1.0.0",
   },
   {
@@ -39,6 +42,7 @@ const items: Project[] = [
     github: "https://github.com/nawseekhiya/hkbk-glug-site",
     demo: "https://hkbk.glugs.fsmk.org/",
     imageColor: "from-blue-500/20 to-indigo-500/20",
+    image: "/assets/hkbk-glug.png",
     status: "v2.1.0",
   },
   {
@@ -140,8 +144,18 @@ function ProjectCard({ project }: { project: Project }) {
     <Card className="relative overflow-hidden flex flex-col h-full bg-card/40 dark:bg-card/60 backdrop-blur-sm hover:bg-card/60 hover:shadow-xl transition-all duration-300 border-white/10 dark:border-white/10 group">
 
 
-      {/* Thumbnail Placeholder */}
-      <div className={`h-48 w-full bg-gradient-to-br ${project.imageColor} relative overflow-hidden group-hover:scale-105 transition-transform duration-500`} />
+      {/* Thumbnail */}
+      <div className={`h-48 w-full relative overflow-hidden group-hover:scale-105 transition-transform duration-500 ${!project.image ? `bg-gradient-to-br ${project.imageColor}` : ""}`}>
+        {project.image && (
+           <Image 
+             src={project.image} 
+             alt={project.title} 
+             fill 
+             className="object-top"
+             style={{ objectFit: "cover" }}
+           />
+        )}
+      </div>
 
       <CardHeader className="p-6 pb-2">
         <div className="flex justify-between items-start gap-4">

@@ -4,11 +4,11 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, GraduationCap, Users, Award, ExternalLink } from "lucide-react"
 import { Section } from "@/components/ui/section"
+import Image from "next/image"
+import { SiOracle } from "react-icons/si";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-
-
 
 
 const certifications = [
@@ -94,9 +94,14 @@ export function About() {
             </CardHeader>
             <CardContent>
                <div className="flex gap-4">
-                  <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center border border-border/50 shrink-0 mt-1">
-                     {/* Logo Placeholder */}
-                     <span className="text-xs font-bold text-muted-foreground">IMG</span>
+                  <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center border border-border/50 shrink-0 mt-1 overflow-hidden relative">
+                     {/* Logo */}
+                     <Image 
+                        src="/assets/hkbk-icon.png" 
+                        alt="HKBK College of Engineering" 
+                        fill 
+                        className="object-cover"
+                     />
                   </div>
                   <div className="flex-1">
                       <div className="flex justify-between items-start mb-2">
@@ -146,8 +151,13 @@ export function About() {
             </CardHeader>
             <CardContent className="grid gap-4">
                <div className="flex items-center gap-4 border-b border-border/40 pb-4 last:border-0 last:pb-0">
-                  <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center border border-border/50 shrink-0">
-                     <span className="text-xs font-bold text-muted-foreground">IMG</span>
+                  <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center border border-border/50 shrink-0 overflow-hidden relative">
+                     <Image 
+                        src="/assets/hkbk-glug-icon.svg" 
+                        alt="HKBK GLUG" 
+                        fill 
+                        className="object-cover" 
+                     />
                   </div>
                   <div className="flex-1">
                     <div className="flex justify-between items-center mb-1">
@@ -183,8 +193,12 @@ export function About() {
             <CardContent className="grid gap-4">
                {certifications.map((cert) => (
                  <div key={cert.name} className="flex items-center gap-4 border-b border-border/40 pb-4 last:border-0 last:pb-0">
-                    <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center border border-border/50 shrink-0">
-                       <span className="text-xs font-bold text-muted-foreground">IMG</span>
+                    <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center border border-border/50 shrink-0 overflow-hidden">
+                       {cert.issuer === "Oracle" ? (
+                         <SiOracle className="h-5 w-5 text-[#F80000]" />
+                       ) : (
+                         <span className="text-xs font-bold text-muted-foreground">IMG</span>
+                       )}
                     </div>
                     <div className="flex-1">
                       <div className="flex justify-between items-start mb-1">
