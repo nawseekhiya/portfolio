@@ -52,7 +52,7 @@ export function Contact() {
   }
 
   return (
-    <Section id="contact" className="relative overflow-hidden">
+    <Section id="contact" className="relative overflow-hidden bg-secondary/10">
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <motion.div
            initial={{ opacity: 0, y: 20 }}

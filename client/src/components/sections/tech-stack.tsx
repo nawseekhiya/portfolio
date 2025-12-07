@@ -56,7 +56,7 @@ const techLogos = [
 
 export function TechStack() {
   return (
-    <Section id="tech-stack" className="py-12 border-b border-border/40">
+    <Section id="tech-stack" className="py-12 border-b border-border/40 bg-secondary/5">
       <motion.div
          initial={{ opacity: 0, y: 20 }}
          whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ export function TechStack() {
            <h2 className="text-2xl font-bold tracking-tight text-foreground/80">Technologies I Work With</h2>
         </div>
         
-        <div className="w-full bg-background/50 border border-border/50 rounded-xl backdrop-blur-sm p-6 overflow-hidden">
+        <div className="w-full bg-background/50 border border-border/50 rounded-xl backdrop-blur-sm p-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
             <LogoLoop 
               logos={techLogos} 
               speed={50} 

@@ -71,7 +71,7 @@ export function Projects() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <Section id="projects">
+    <Section id="projects" className="bg-secondary/5">
       <div className="flex items-center justify-between mb-12">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-foreground">Featured Work</h2>
         <Button onClick={() => setShowModal(true)} variant="outline">
