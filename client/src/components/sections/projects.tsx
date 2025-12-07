@@ -36,8 +36,8 @@ const items: Project[] = [
     description: "A responsive website for the HKBK GLUG chapter, featuring a modern design and smooth animations.",
     date: "Oct 2024",
     tech: ["Next.js", "TypeScript", "Express.js", "Tailwind CSS", "MongoDB", "Docker"],
-    github: "https://github.com",
-    demo: "https://example.com",
+    github: "https://github.com/nawseekhiya/hkbk-glug-site",
+    demo: "https://hkbk.glugs.fsmk.org/",
     imageColor: "from-blue-500/20 to-indigo-500/20",
     status: "v2.1.0",
   },
@@ -46,19 +46,18 @@ const items: Project[] = [
     description: "A Machine Learning–powered web application that detects whether a news article is real or fake. Built using Python, Scikit-learn, and Streamlit, the app takes the title and content of a news piece, processes it using NLP, and returns the probability of it being fake or real.",
     date: "Aug 2024",
     tech: ["Python", "Pandas", "Scikit-learn", "Streamlit", "Jupyter"],
-    github: "https://github.com",
+    github: "https://github.com/nawseekhiya/fake-news-detector",
     imageColor: "from-purple-500/20 to-pink-500/20",
     status: "Stable",
   },
   {
-    title: "TaskMaster Pro",
-    description: "AI-powered task management application with natural language processing capabilities. Automatically categorizes and prioritizes tasks.",
-    date: "Jun 2024",
-    tech: ["OpenAI API", "Next.js", "Prisma", "MongoDB"],
-    github: "https://github.com",
-    demo: "https://example.com",
+    title: "AI Judge",
+    description: "Web app where two sides upload arguments or documents and an AI judge (Gemini API) issues a verdict.",
+    date: "Nov 2025",
+    tech: ["Next.js", "TypeScript", "Google Gemini", "Node.js", "Express.js", "Tailwind CSS"],
+    github: "https://github.com/nawseekhiya/ai-judge",
     imageColor: "from-orange-500/20 to-red-500/20",
-    status: "In Progress",
+    status: "In Development",
   },
 ];
 
@@ -109,8 +108,9 @@ const techMap: Record<string, string> = {
   "Prisma": "prisma",
   "Docker": "docker",
   "Redis": "redis",
+  "Google Gemini": "googlegemini",
   "OpenAI API": "openai",
-  "Recharts": "chartdotjs", // Fallback for similar visual
+  "Recharts": "chartdotjs", 
   "Supabase": "supabase",
   "Storybook": "storybook",
   "Python": "python",
@@ -141,11 +141,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 
       {/* Thumbnail Placeholder */}
-      <div className={`h-48 w-full bg-gradient-to-br ${project.imageColor} relative overflow-hidden group-hover:scale-105 transition-transform duration-500`}>
-         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 backdrop-blur-[2px]">
-            <Button variant="secondary" size="sm" className="pointer-events-none">View Details</Button>
-         </div>
-      </div>
+      <div className={`h-48 w-full bg-gradient-to-br ${project.imageColor} relative overflow-hidden group-hover:scale-105 transition-transform duration-500`} />
 
       <CardHeader className="p-6 pb-2">
         <div className="flex justify-between items-start gap-4">
