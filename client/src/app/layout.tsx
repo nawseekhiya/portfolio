@@ -84,7 +84,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-            <main className="flex-1 flex flex-col">
+            <main className="mt-8 flex-1 flex flex-col">
               {children}
             </main>
           <Footer />
