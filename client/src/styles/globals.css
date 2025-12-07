@@ -24,6 +24,10 @@
   --muted-foreground: #71717a;
   /* Zinc 500 */
 
+  /* Destructive */
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+
   /* Borders & Inputs */
   --border: #e4e4e7;
   /* Zinc 200 */
@@ -69,6 +73,10 @@
   --muted-foreground: #a1a1aa;
   /* Zinc 400 */
 
+  /* Destructive */
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fafafa;
+
   /* Borders & Inputs */
   --border: #27272a;
   /* Zinc 800 */
@@ -97,6 +105,8 @@
   --color-ring: var(--ring);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
 
   --radius-lg: var(--radius-lg);
   --radius-md: var(--radius-md);

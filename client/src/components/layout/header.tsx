@@ -6,7 +6,7 @@ import { ModeToggle } from "@/components/ui/mode-toggle";
 const navItems = [
   { name: "About", href: "#about" },
   { name: "Projects", href: "/projects" }, // Using route as per plan, though MVP might scroll first
-  { name: "Contact", href: "/contact" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export function Header() {
