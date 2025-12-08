@@ -168,8 +168,13 @@ export function About() {
                   </div>
                </div>
                <div className="flex items-center gap-4 border-b border-border/40 pb-4 last:border-0 last:pb-0">
-                  <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center border border-border/50 shrink-0">
-                     <span className="text-xs font-bold text-muted-foreground">IMG</span>
+                  <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center border border-border/50 shrink-0 overflow-hidden relative">
+                     <Image 
+                        src="/assets/tezbytes-icon.png" 
+                        alt="TezBytes" 
+                        fill 
+                        className="object-cover" 
+                     />
                   </div>
                   <div className="flex-1">
                     <div className="flex justify-between items-center mb-1">
