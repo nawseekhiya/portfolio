@@ -49,8 +49,9 @@ export function Modal({ isOpen, onClose, children, title, className }: ModalProp
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
+              style={{ willChange: "transform, opacity" }}
               className={cn(
-                "relative w-full max-w-6xl max-h-[85vh] flex flex-col pointer-events-auto rounded-3xl border border-white/10 bg-background/100 backdrop-blur-3xl saturate-150 shadow-2xl outline-none overflow-hidden",
+                "relative w-full max-w-6xl max-h-[85vh] flex flex-col pointer-events-auto rounded-3xl border border-white/10 bg-background/95 backdrop-blur-md shadow-2xl outline-none overflow-hidden",
                 className
               )}
             >

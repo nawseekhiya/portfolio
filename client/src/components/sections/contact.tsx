@@ -57,7 +57,7 @@ export function Contact() {
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
+           viewport={{ once: true, margin: "-100px" }}
            className="text-center mb-12"
         >
            <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-foreground mb-4">
@@ -73,7 +73,7 @@ export function Contact() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             className="flex flex-col justify-between h-full gap-8"
           >
             {/* Top Group: Contact Details & Socials */}

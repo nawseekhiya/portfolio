@@ -1,13 +1,15 @@
 "use client"
 
 import * as React from "react"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Section } from "@/components/ui/section"
 import Image from "next/image"
 
 export function Hero() {
+  const shouldReduceMotion = useReducedMotion()
+
   return (
     <Section className="flex min-h-[calc(100vh-3.5rem)] flex-col justify-center">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -92,13 +94,15 @@ export function Hero() {
             {/* Ambient Mesh Glow (Background) */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] -z-10 opacity-60 transition-all duration-700 group-hover:opacity-100">
                 <motion.div
-                   animate={{ scale: [1, 1.1, 1], rotate: [0, 10, 0] }}
+                   animate={shouldReduceMotion ? {} : { scale: [1, 1.1, 1], rotate: [0, 10, 0] }}
                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                   style={{ willChange: "transform" }}
                    className="absolute top-0 left-0 w-3/4 h-3/4 bg-primary/40 rounded-full blur-[80px]"
                 />
                 <motion.div
-                   animate={{ scale: [1.1, 0.9, 1.1], rotate: [0, -10, 0] }}
+                   animate={shouldReduceMotion ? {} : { scale: [1.1, 0.9, 1.1], rotate: [0, -10, 0] }}
                    transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+                   style={{ willChange: "transform" }}
                    className="absolute bottom-0 right-0 w-3/4 h-3/4 bg-blue-600/30 rounded-full blur-[80px]"
                 />
             </div>
@@ -107,12 +111,13 @@ export function Hero() {
             <div className="absolute -inset-[2px] rounded-full overflow-hidden">
                 <motion.div
                   className="absolute inset-[-100%] bg-[conic-gradient(from_90deg_at_50%_50%,#0000_0%,var(--primary)_50%,#0000_100%)]"
-                  animate={{ rotate: 360 }}
+                  animate={shouldReduceMotion ? {} : { rotate: 360 }}
                   transition={{
                     duration: 4,
                     repeat: Infinity,
                     ease: "linear",
                   }}
+                  style={{ willChange: "transform" }}
                 />
             </div>
 
@@ -124,6 +129,7 @@ export function Hero() {
                 fill 
                 className="object-contain object-top translate-y-6 relative z-10"
                 priority
+                sizes="(max-width: 768px) 100vw, 500px"
               />
             </div>
          </div>

@@ -67,7 +67,7 @@ export function Experience() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-4 z-10"
         >
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-foreground">Work Experience</h2>
