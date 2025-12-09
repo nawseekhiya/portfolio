@@ -42,17 +42,33 @@ export function Header() {
   const headerHeight = isOpen ? 56 + menuHeight : 56; // 56px = h-14
 
   return (
-    <motion.header
-      initial={{ height: 56 }}
-      animate={{ height: headerHeight }}
-      transition={{ 
-        type: "spring", 
-        stiffness: 300, 
-        damping: 30
-      }}
-      style={{ borderRadius: 24 }}
-      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl min-w-[calc(375px*0.95)] border border-border/40 bg-background/60 backdrop-blur-md shadow-sm supports-[backdrop-filter]:bg-background/30 overflow-hidden"
-    >
+    <>
+      {/* Backdrop - closes menu when tapping outside */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-40 md:hidden"
+            onClick={() => setIsOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+      </AnimatePresence>
+
+      <motion.header
+        initial={{ height: 56 }}
+        animate={{ height: headerHeight }}
+        transition={{ 
+          type: "spring", 
+          stiffness: 300, 
+          damping: 30
+        }}
+        style={{ borderRadius: 24 }}
+        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl min-w-[calc(375px*0.95)] border border-border/40 bg-background/60 backdrop-blur-md shadow-sm supports-[backdrop-filter]:bg-background/30 overflow-hidden"
+      >
       {/* Top Bar */}
       <div className="relative flex h-14 items-center justify-between px-6">
         {/* Brand / Logo */}
@@ -157,5 +173,6 @@ export function Header() {
         </nav>
       </div>
     </motion.header>
+    </>
   );
 }
