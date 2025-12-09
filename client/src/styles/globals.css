@@ -15,13 +15,20 @@
   body {
     min-width: 375px;
   }
+
+  /* Offset scroll position for anchor links to account for floating header */
+  #about,
+  #projects,
+  #experience,
+  #contact {
+    scroll-margin-top: 65px;
+  }
 }
 
 :root {
   /* Colors - Light Mode (Cool Zinc + Electric Blue) */
   --background: #ffffff;
   --foreground: #18181b;
-  /* Zinc 900 */
 
   /* Primary Brand - Electric Blue */
   --primary: #2F54EB;

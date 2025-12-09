@@ -57,7 +57,15 @@ export function Header() {
       <div className="relative flex h-14 items-center justify-between px-6">
         {/* Brand / Logo */}
         <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center space-x-2 font-bold text-lg tracking-tight whitespace-nowrap">
+          <Link 
+            href="/" 
+            onClick={(e) => {
+              e.preventDefault();
+              setIsOpen(false);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex items-center space-x-2 font-bold text-lg tracking-tight whitespace-nowrap"
+          >
             <span>Abhishek Mohanty<span className="text-primary">.</span></span>
           </Link>
         </div>
