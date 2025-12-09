@@ -1,25 +1,135 @@
 "use client"
 
 import * as React from "react"
-import { motion, useReducedMotion } from "framer-motion"
-import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import { ArrowRight, Download, Github, Linkedin, Mail, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Section } from "@/components/ui/section"
 import Image from "next/image"
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion()
+  const [isAvatarOpen, setIsAvatarOpen] = React.useState(false)
+
+  // Disable body scroll when modal is open
+  React.useEffect(() => {
+    if (isAvatarOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isAvatarOpen])
 
   return (
     <Section className="flex min-h-[calc(100vh-3.5rem)] flex-col justify-center">
+      {/* Instagram-style Avatar Lightbox Modal */}
+      <AnimatePresence>
+        {isAvatarOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            onClick={() => setIsAvatarOpen(false)}
+          >
+            {/* Close Button */}
+            <button 
+              className="absolute top-6 right-6 p-2 text-white/70 hover:text-white transition-colors"
+              onClick={() => setIsAvatarOpen(false)}
+              aria-label="Close"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            
+            {/* Large Circular Avatar */}
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Glow Ring */}
+              <div className="absolute -inset-2 bg-primary/40 rounded-full blur-2xl" />
+              
+              {/* Animated Ring */}
+              <div className="absolute -inset-[3px] rounded-full overflow-hidden">
+                <motion.div
+                  className="absolute inset-[-100%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,var(--primary)_50%,transparent_100%)]"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                />
+              </div>
+              
+              {/* Avatar */}
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full border-2 border-white/20 bg-background overflow-hidden">
+                <Image 
+                  src="/assets/hero-avatar.svg" 
+                  alt="Abhishek Mohanty" 
+                  fill 
+                  className="object-contain object-top translate-y-4"
+                  sizes="320px"
+                  priority
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="grid lg:grid-cols-2 gap-12 px-4 items-center">
         <div className="flex flex-col gap-6">
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          className="flex items-center gap-4"
         >
-          <span className="inline-block rounded-full bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground mb-4">
+          {/* Enhanced Mobile Avatar with Animated Ring */}
+          <div 
+            className="lg:hidden relative group cursor-pointer"
+            onClick={() => setIsAvatarOpen(true)}
+            role="button"
+            tabIndex={0}
+            aria-label="View profile picture"
+            onKeyDown={(e) => e.key === 'Enter' && setIsAvatarOpen(true)}
+          >
+            {/* Glow Effect */}
+            <div className="absolute inset-0 bg-primary/30 rounded-full blur-xl scale-125 group-hover:bg-primary/50 transition-all duration-500" />
+            
+            {/* Animated Gradient Ring */}
+            <div className="absolute -inset-[2px] rounded-full overflow-hidden">
+              <motion.div
+                className="absolute inset-[-100%] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,var(--primary)_50%,transparent_100%)]"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              />
+            </div>
+            
+            {/* Avatar Container */}
+            <div className="relative w-14 h-14 rounded-full border border-white/10 bg-background overflow-hidden group-active:scale-95 transition-transform">
+              <Image 
+                src="/assets/hero-avatar.svg" 
+                alt="Abhishek Mohanty" 
+                fill 
+                className="object-contain object-top translate-y-1"
+                sizes="56px"
+              />
+            </div>
+            
+            {/* Online Status Indicator */}
+            <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-background">
+              <div className="absolute inset-0 bg-green-400 rounded-full animate-ping opacity-75" />
+            </div>
+          </div>
+          
+          <span className="inline-block rounded-full bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground">
             Available for new opportunities
           </span>
         </motion.div>
