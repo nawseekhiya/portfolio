@@ -178,7 +178,7 @@ function ProjectCard({ project }: { project: Project }) {
         )}
       </div>
 
-      <CardHeader className="p-4 sm:p-6 pb-2">
+      <CardHeader className="px-6 sm:px-6 pt-5 sm:pt-6 pb-2">
         <div className="flex justify-between items-start gap-4">
           <div className="space-y-1">
              <div className="mb-2">
@@ -196,13 +196,13 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
       </CardHeader>
 
-      <CardContent className="p-6 pt-2 flex-grow">
+      <CardContent className="px-6 sm:px-6 py-4 flex-grow">
         <p className="text-muted-foreground text-sm leading-relaxed mb-4">
           {project.description}
         </p>
       </CardContent>
 
-      <CardFooter className="p-6 pt-0 flex items-center justify-between">
+      <CardFooter className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 flex items-center justify-between">
         <div className="flex items-center -space-x-2 py-1 pl-1">
           {project.tech.map((t, i) => {
              const slug = techMap[t] || "javascript"; 
