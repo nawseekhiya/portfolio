@@ -3,6 +3,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  body {
+    min-width: 375px;
+  }
+}
+
 :root {
   /* Colors - Light Mode (Cool Zinc + Electric Blue) */
   --background: #ffffff;

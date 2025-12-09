@@ -12,7 +12,7 @@ export function Hero() {
 
   return (
     <Section className="flex min-h-[calc(100vh-3.5rem)] flex-col justify-center">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="grid lg:grid-cols-2 gap-12 px-4 items-center">
         <div className="flex flex-col gap-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="max-w-3xl text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
             Building digital <br className="hidden sm:inline" />
             <span className="text-primary">experiences</span> that matter.
           </h1>
@@ -50,19 +50,19 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-wrap gap-4 pt-4"
+          className="flex flex-col sm:flex-row gap-4 pt-4"
         >
-          <Button size="lg" className="h-12 px-6 text-base" asChild>
+          <Button size="lg" className="h-12 px-6 text-base w-full sm:w-auto" asChild>
             <a href="#projects">
               View Work <ArrowRight className="ml-2 h-4 w-4" />
             </a>
           </Button>
-          <Button size="lg" variant="outline" className="h-12 px-6 text-base" asChild>
+          <Button size="lg" variant="outline" className="h-12 px-6 text-base w-full sm:w-auto" asChild>
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
               Resume <Download className="ml-2 h-4 w-4" />
             </a>
           </Button>
-          <div className="flex gap-2 sm:ml-4">
+          <div className="flex gap-2 justify-center sm:justify-start sm:ml-4">
              <Button variant="ghost" size="icon" className="h-12 w-12 rounded-xl" asChild>
                 <a href="https://github.com/nawseekhiya" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <Github className="h-6 w-6" />

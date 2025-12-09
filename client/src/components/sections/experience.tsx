@@ -104,7 +104,7 @@ export function Experience() {
 
                 {/* Card */}
                 <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-lg hover:border-primary/20 transition-all duration-300 overflow-hidden group">
-                  <CardContent className="p-6 sm:p-8">
+                  <CardContent className="p-5 sm:p-6 md:p-8">
                     <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
                       <div className="space-y-2">
                         <h3 className="text-2xl font-bold text-foreground/90 group-hover:text-primary transition-colors duration-300">{job.role}</h3>

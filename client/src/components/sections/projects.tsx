@@ -71,7 +71,7 @@ export function Projects() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <Section id="projects" className="bg-secondary/5">
+    <Section id="projects" className="bg-secondary/5 px-4">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -80,12 +80,12 @@ export function Projects() {
         className="flex items-center justify-between mb-12"
       >
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-foreground">Featured Work</h2>
-        <Button onClick={() => setShowModal(true)} variant="outline">
+        <Button onClick={() => setShowModal(true)} variant="outline" className="hidden md:inline-flex">
           View All Projects <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto mb-8 md:mb-0">
         {featuredItems.map((project, index) => (
           <motion.div
             key={index}
@@ -97,6 +97,12 @@ export function Projects() {
             <ProjectCard project={project} />
           </motion.div>
         ))}
+      </div>
+
+      <div className="md:hidden flex justify-center w-full">
+         <Button onClick={() => setShowModal(true)} variant="outline" className="w-full">
+            View All Projects <ArrowRight className="ml-2 h-4 w-4" />
+         </Button>
       </div>
 
       <Modal 
@@ -172,7 +178,7 @@ function ProjectCard({ project }: { project: Project }) {
         )}
       </div>
 
-      <CardHeader className="p-6 pb-2">
+      <CardHeader className="p-4 sm:p-6 pb-2">
         <div className="flex justify-between items-start gap-4">
           <div className="space-y-1">
              <div className="mb-2">

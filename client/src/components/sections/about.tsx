@@ -23,7 +23,7 @@ const certifications = [
 export function About() {
   return (
     <Section id="about" className="bg-secondary/30">
-      <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+      <div className="grid gap-12 md:grid-cols-2 px-4 md:gap-16">
         {/* Narrative Column */}
         <motion.div
            initial={{ opacity: 0, x: -20 }}
@@ -86,13 +86,13 @@ export function About() {
 
           {/* Education Card */}
           <Card className="bg-background/40 backdrop-blur-sm border-border/50 hover:shadow-lg hover:border-primary/20 transition-all duration-300 group">
-            <CardHeader>
+            <CardHeader className="p-5 sm:p-6 pb-4">
               <CardTitle className="text-xl flex items-center gap-2">
                 <GraduationCap className="h-5 w-5 text-primary" />
                 Education
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-5 sm:p-6 pt-0">
                <div className="flex gap-4">
                   <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center border border-border/50 shrink-0 mt-1 overflow-hidden relative">
                      {/* Logo */}
@@ -104,12 +104,12 @@ export function About() {
                      />
                   </div>
                   <div className="flex-1">
-                      <div className="flex justify-between items-start mb-2">
-                        <div>
-                            <h4 className="font-semibold text-foreground">HKBK College of Engineering</h4>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-1">
+                        <div className="flex flex-col gap-1">
+                            <h4 className="font-semibold text-foreground leading-tight">HKBK College of Engineering</h4>
                             <p className="text-sm text-muted-foreground">Bengaluru, India</p>
                         </div>
-                        <span className="text-sm text-muted-foreground font-mono whitespace-nowrap text-right">Aug 2022 - Present</span>
+                        <span className="text-xs text-muted-foreground font-mono whitespace-nowrap text-left sm:text-right text-center">Aug 2022 - Present</span>
                       </div>
                       
                       <div className="mb-4">
@@ -143,13 +143,13 @@ export function About() {
 
           {/* Community Card */}
           <Card className="bg-background/40 backdrop-blur-sm border-border/50 hover:shadow-lg hover:border-primary/20 transition-all duration-300 group">
-            <CardHeader>
+            <CardHeader className="p-4 sm:p-6 pb-4">
               <CardTitle className="text-xl flex items-center gap-2">
                 <Users className="h-5 w-5 text-primary" />
                 Community
               </CardTitle>
             </CardHeader>
-            <CardContent className="grid gap-4">
+            <CardContent className="grid gap-4 p-4 sm:p-6 pt-0">
                <div className="flex items-center gap-4 border-b border-border/40 pb-4 last:border-0 last:pb-0">
                   <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center border border-border/50 shrink-0 overflow-hidden relative">
                      <Image 
@@ -160,7 +160,7 @@ export function About() {
                      />
                   </div>
                   <div className="flex-1">
-                    <div className="flex justify-between items-center mb-1">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-1 gap-2">
                        <p className="font-medium leading-none">HKBK GLUG</p>
                        <span className="text-xs text-muted-foreground font-mono">Jul 2023 - Present</span>
                     </div>
@@ -177,7 +177,7 @@ export function About() {
                      />
                   </div>
                   <div className="flex-1">
-                    <div className="flex justify-between items-center mb-1">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-1 gap-2">
                        <p className="font-medium leading-none">TezBytes</p>
                        <span className="text-xs text-muted-foreground font-mono">Jun 2025 - Present</span>
                     </div>
@@ -189,13 +189,13 @@ export function About() {
 
           {/* Certifications Card */}
           <Card className="bg-background/40 backdrop-blur-sm border-border/50 hover:shadow-lg hover:border-primary/20 transition-all duration-300 group">
-            <CardHeader>
+            <CardHeader className="p-5 sm:p-6 pb-4">
               <CardTitle className="text-xl flex items-center gap-2">
                 <Award className="h-5 w-5 text-primary" />
                 Certifications
               </CardTitle>
             </CardHeader>
-            <CardContent className="grid gap-4">
+            <CardContent className="grid gap-4 p-5 sm:p-6 pt-0">
                {certifications.map((cert) => (
                  <div key={cert.name} className="flex items-center gap-4 border-b border-border/40 pb-4 last:border-0 last:pb-0">
                     <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center border border-border/50 shrink-0 overflow-hidden">
@@ -206,7 +206,7 @@ export function About() {
                        )}
                     </div>
                     <div className="flex-1">
-                      <div className="flex justify-between items-start mb-1">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-1 gap-1">
                          <p className="font-medium leading-snug pr-2">{cert.name}</p>
                          <span className="text-xs text-muted-foreground font-mono whitespace-nowrap shrink-0 mt-0.5">{cert.date}</span>
                       </div>
