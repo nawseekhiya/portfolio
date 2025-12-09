@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, ExternalLink, Calendar } from "lucide-react";
+import { ArrowRight, Github, ExternalLink, Calendar, Newspaper, Scale } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -166,7 +166,7 @@ function ProjectCard({ project }: { project: Project }) {
 
       {/* Thumbnail */}
       <div className={`h-48 w-full relative overflow-hidden group-hover:scale-105 transition-transform duration-500 ${!project.image ? `bg-gradient-to-br ${project.imageColor}` : ""}`}>
-        {project.image && (
+        {project.image ? (
            <Image 
              src={project.image} 
              alt={project.title} 
@@ -175,6 +175,15 @@ function ProjectCard({ project }: { project: Project }) {
              style={{ objectFit: "cover" }}
              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
            />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            {project.title.includes("News") && (
+              <Newspaper className="w-16 h-16 text-foreground/20" />
+            )}
+            {project.title.includes("Judge") && (
+              <Scale className="w-16 h-16 text-foreground/20" />
+            )}
+          </div>
         )}
       </div>
 
