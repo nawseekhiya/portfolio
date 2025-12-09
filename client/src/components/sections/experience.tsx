@@ -1,0 +1,183 @@
+"use client"
+
+import { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { Section } from "@/components/ui/section"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Building2, MapPin, Calendar, Trophy, ArrowRight, Briefcase, ExternalLink } from "lucide-react"
+
+interface ExperienceItem {
+  role: string;
+  company: string;
+  location: string;
+  type: string;
+  period: string;
+  achievements: string[];
+  skills: string[];
+  companyUrl?: string;
+}
+
+const experience: ExperienceItem[] = [
+  {
+    role: "Full Stack Developer Intern",
+    company: "Unimad",
+    location: "London, UK · Remote",
+    type: "Internship",
+    period: "Oct 2025 - Present",
+    achievements: [
+      "Built a job application board from the ground up, implementing intuitive flows and improving application completion rates by 24%.",
+      "Enhanced resume builder templates and resolved major UX issues across the editor, cutting user friction and reducing error occurrences by 31%.",
+      "Converted high-fidelity design files into production-ready interfaces, improving design accuracy and visual consistency by 26%.",
+      "Revamped key UI sections through layout modernization and component restructuring, resulting in a smoother experience and a 21% increase in overall usability."
+    ],
+    skills: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Python", "Django", "Git"],
+    companyUrl: "https://unimad.ai"
+  },
+  {
+    role: "Design Engineer Intern",
+    company: "Metrograsp Technology",
+    location: "Bengaluru, India · Hybrid",
+    type: "Internship",
+    period: "Nov 2024 - Jun 2025",
+    achievements: [
+      "Spearheaded the end-to-end design and rollout of Metrograsp’s unified brand identity and design system, ensuring consistency across 4+ product lines.",
+      "Created UX flows and prototypes for health and wellness products tailored to the Indian market, optimizing for cultural relevance and usability.",
+      "Drove the launch of a new sub-brand, contributing to a 40% increase in digital engagement in the first quarter post-launch.",
+      "Facilitated cross-functional alignment between design, engineering, and product teams to ensure brand integrity and user-centered decision-making."
+    ],
+    skills: ["CAD/CAM", "Product Design", "Design Systems", "React", "Figma", "Prototyping"],
+    companyUrl: "https://metrograsp.in"
+  }
+]
+
+export function Experience() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"]
+  })
+
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1])
+
+  return (
+    <Section id="experience" className="bg-secondary/20 relative overflow-hidden">
+      <div className="flex flex-col gap-12 max-w-4xl mx-auto px-4 relative" ref={containerRef}>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center mb-4 z-10"
+        >
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-foreground">Work Experience</h2>
+        </motion.div>
+        
+        <div className="relative">
+           {/* Timeline Line Container */}
+           <div className="hidden md:flex flex-col items-center absolute left-[19px] top-4 bottom-0 w-4 z-0">
+              <div className="w-0.5 h-full bg-border/40 relative">
+                 <motion.div 
+                   style={{ scaleY, originY: 0 }}
+                   className="absolute top-0 left-0 w-full bg-gradient-to-b from-primary via-primary to-transparent" 
+                 />
+              </div>
+           </div>
+
+           {/* Experience Items */}
+           <div className="flex flex-col gap-12 w-full">
+            {experience.map((job, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative grid grid-cols-1 md:grid-cols-[50px_1fr] gap-4"
+              >
+                {/* Timeline Dot */}
+                <div className="hidden md:flex flex-col items-center pt-2 relative z-10">
+                   <div className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center shadow-sm group-hover:border-primary transition-colors">
+                      <Briefcase className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                   </div>
+                </div>
+
+                {/* Card */}
+                <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-lg hover:border-primary/20 transition-all duration-300 overflow-hidden group">
+                  <CardContent className="p-5 sm:p-6 md:p-8">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+                      <div className="space-y-2">
+                        <h3 className="text-2xl font-bold text-foreground/90 group-hover:text-primary transition-colors duration-300">{job.role}</h3>
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground font-medium">
+                          <div className="flex items-center gap-1.5">
+                            <Building2 className="h-4 w-4 opacity-70" />
+                            <span>{job.company}</span>
+                          </div>
+                          <div className="flex items-center gap-1.5">
+                            <MapPin className="h-4 w-4 opacity-70" />
+                            <span>{job.location}</span>
+                          </div>
+                          <Badge variant="secondary" className="bg-secondary/80 text-secondary-foreground hover:bg-secondary border-0 transition-colors">
+                            {job.type}
+                          </Badge>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 bg-primary/5 text-primary px-3 py-1.5 rounded-full text-sm font-medium border border-primary/10 whitespace-nowrap self-start">
+                        <Calendar className="h-4 w-4" />
+                        <span>{job.period}</span>
+                      </div>
+                    </div>
+
+                    <div className="mb-6">
+                      <div className="flex items-center gap-2 mb-3 text-foreground/90 font-semibold">
+                        <Trophy className="h-4 w-4 text-amber-500" />
+                        <span>Key Achievements</span>
+                      </div>
+                      <ul className="space-y-2">
+                        {job.achievements.map((achievement, i) => (
+                          <li key={i} className="flex items-start gap-3 text-muted-foreground text-sm leading-relaxed group-hover:text-foreground/80 transition-colors">
+                            <ArrowRight className="h-4 w-4 text-primary/60 shrink-0 mt-0.5" />
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-border/40">
+                      <div className="flex flex-wrap gap-2">
+                        {job.skills.map((skill) => (
+                          <Badge 
+                            key={skill} 
+                            variant="outline" 
+                            className="bg-primary/5 hover:bg-primary/10 border-primary/10 text-primary hover:text-primary transition-colors cursor-default"
+                          >
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+
+                      {job.companyUrl && (
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="text-muted-foreground hover:text-primary shrink-0 group/btn"
+                          asChild
+                        >
+                          <a href={job.companyUrl} target="_blank" rel="noopener noreferrer">
+                            <span>Visit Company</span>
+                            <ExternalLink className="ml-2 h-3 w-3 transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
+                          </a>
+                        </Button>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+           </div>
+        </div>
+      </div>
+    </Section>
+  )
+}
