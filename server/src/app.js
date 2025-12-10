@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { env } from './config/env.js';
+import contactRoutes from './routes/contact.js';
 
 const app = express();
 
@@ -29,6 +30,9 @@ app.get('/health', (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
+
+// API Routes
+app.use('/api/contact', contactRoutes);
 
 // 404 handler
 app.use((req, res) => {
