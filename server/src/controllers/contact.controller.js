@@ -1,5 +1,6 @@
 import Contact from '../models/Contact.js';
 import { validateContact } from '../validators/contact.validator.js';
+import { sendContactNotification } from '../services/email.service.js';
 
 export const submitContact = async (req, res) => {
   try {
@@ -35,6 +36,9 @@ export const submitContact = async (req, res) => {
     });
 
     console.log(`📧 New contact submission from ${email}`);
+
+    // Send email notification (non-blocking)
+    sendContactNotification({ name, email, subject, message });
 
     res.status(201).json({
       success: true,

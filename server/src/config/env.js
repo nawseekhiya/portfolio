@@ -5,6 +5,8 @@ const envSchema = z.object({
   PORT: z.string().transform(Number).default('5000'),
   CLIENT_ORIGIN: z.string().url().default('http://localhost:3000'),
   MONGODB_URI: z.string().optional(),
+  RESEND_API_KEY: z.string().optional(),
+  NOTIFICATION_EMAIL: z.string().email().optional(),
 });
 
 const parsed = envSchema.safeParse(process.env);
