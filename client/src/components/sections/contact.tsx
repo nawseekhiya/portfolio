@@ -10,13 +10,15 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
-import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2, Github, Linkedin } from "lucide-react"
+import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2, Github, Linkedin, AlertCircle } from "lucide-react"
 import { motion } from "framer-motion"
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
-  subject: z.string().optional(),
+  subject: z.string().min(5, "Subject must be at least 5 characters"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 })
 
@@ -25,6 +27,7 @@ type FormData = z.infer<typeof formSchema>
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const {
     register,
@@ -37,15 +40,26 @@ export function Contact() {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
+    setError(null)
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      console.log(data)
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message")
+      }
+
       setIsSuccess(true)
       reset()
-      setTimeout(() => setIsSuccess(false), 3000)
-    } catch (error) {
-      console.error("Failed to submit form", error)
+      setTimeout(() => setIsSuccess(false), 5000)
+    } catch (err) {
+      console.error("Failed to submit form", err)
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
@@ -194,7 +208,7 @@ export function Contact() {
                      </div>
 
                      <div className="space-y-2">
-                       <Label htmlFor="subject" className="mb-2 inline-block">Subject</Label>
+                        <Label htmlFor="subject" className="mb-2 inline-block">Subject <span className="text-destructive">*</span></Label>
                        <Input
                          id="subject"
                          placeholder="What's this about?"
@@ -219,8 +233,15 @@ export function Contact() {
                        />
                        {errors.message && (
                          <p className="text-xs text-destructive">{errors.message.message}</p>
-                       )}
-                     </div>
+                        )}
+                      </div>
+
+                      {error && (
+                        <div className="flex items-center gap-2 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm">
+                          <AlertCircle className="h-4 w-4 shrink-0" />
+                          <span>{error}</span>
+                        </div>
+                      )}
 
                      <Button
                        type="submit"
