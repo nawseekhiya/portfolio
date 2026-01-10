@@ -1,4 +1,4 @@
-# Portfolio Backend API
+# Abhishek Mohanty - Portfolio (Backend API)
 
 Node.js + Express backend for the portfolio contact form.
 
@@ -17,24 +17,28 @@ pnpm dev
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `PORT` | No | Server port (default: 5000) |
-| `NODE_ENV` | No | Environment (default: development) |
-| `CLIENT_ORIGIN` | No | Frontend URL for CORS (default: http://localhost:3000) |
-| `MONGODB_URI` | Yes | MongoDB Atlas connection string |
-| `RESEND_API_KEY` | No | Resend API key for email notifications |
-| `NOTIFICATION_EMAIL` | No | Email to receive contact notifications |
+| Variable             | Required | Description                                                                                |
+| -------------------- | -------- | ------------------------------------------------------------------------------------------ |
+| `PORT`               | No       | Server port (default: 5000)                                                                |
+| `NODE_ENV`           | No       | Environment (default: development)                                                         |
+| `CLIENT_ORIGIN`      | No       | Frontend URL for CORS in development (default: http://localhost:3000)                      |
+| `CLIENT_ORIGIN_PROD` | No       | Frontend URL for CORS in production (overrides `CLIENT_ORIGIN` when `NODE_ENV=production`) |
+| `MONGODB_URI`        | Yes      | MongoDB Atlas connection string                                                            |
+| `RESEND_API_KEY`     | No       | Resend API key for email notifications                                                     |
+| `NOTIFICATION_EMAIL` | No       | Email to receive contact notifications                                                     |
 
 ## API Endpoints
 
 ### Health Check
+
 ```
 GET /health
 ```
+
 Returns server status.
 
 ### Contact Form
+
 ```
 POST /api/contact
 Content-Type: application/json
@@ -49,11 +53,13 @@ Content-Type: application/json
 ```
 
 **Responses:**
+
 - `201` - Success
 - `400` - Validation error
 - `429` - Rate limited (10 requests per 15 minutes)
 
 ### List Contacts (Admin)
+
 ```
 GET /api/contact?status=new&page=1&limit=20
 ```
@@ -95,7 +101,7 @@ server/
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start with hot reload |
+| Command      | Description             |
+| ------------ | ----------------------- |
+| `pnpm dev`   | Start with hot reload   |
 | `pnpm start` | Start production server |
