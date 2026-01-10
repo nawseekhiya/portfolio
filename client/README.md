@@ -1,4 +1,4 @@
-# Modern-Minimal Portfolio (WIP)
+# Abhishek Mohanty - Portfolio (Frontend)
 
 > A production-grade, design-forward personal portfolio.
 
@@ -14,7 +14,7 @@ This project is being built with a "Modern-Minimal" aesthetic, focusing on:
 - **Typography**: Outfit (Headings) + Manrope (Body).
 
 ## Tech Stack
-- **Framework**: Next.js (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Styling**: Tailwind CSS v4
 - **State/Theme**: `next-themes`
 - **Validation**: `zod`
